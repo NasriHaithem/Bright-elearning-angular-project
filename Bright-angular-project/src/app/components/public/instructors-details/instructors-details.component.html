@@ -1,0 +1,283 @@
+<app-navbar></app-navbar>
+<!--PAGE TITLE-->
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-3">
+                <img class="instructor-image" src="./assets/images/teacher3.jpg" alt="instructor-image">
+            </div>
+
+            <div class="col-12 col-lg-9">
+                <div class="row">
+                    <div class="col-12 text-light">
+                        <h3 class="font-weight-bold">Instructor name</h3>
+                    </div>
+                    <div class="col-12">
+                        <span>Web Designer</span>
+                        <span>,Canada</span>
+                    </div>
+
+                    <div class="col-12">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="far fa-star text-warning"></i>
+
+                        <strong class="col-lg-8 col-md-8 col-12 text-success">4.5</strong>
+                    </div>
+
+                    <div class="col-12 mt-2">
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure vitae sunt est reiciendis in! Esse soluta quisquam provident blanditiis sequi.
+                        </p>
+                    </div>
+
+                    <ul class="col-12 instructor-social-icon-list">
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--PAGE CONTENT-->
+<div class="container">
+    <div class="row">
+        <div class="col-12 my-5" id="my-bio-courses-btns">
+            <button id="my-courses-btn" class="btn btn-outline-info mr-2 active" (click)="showInstructorCourses()">Courses</button>
+            <button id="my-bio-btn" class="btn btn-outline-info mr-2" (click)="showInstructorBio()">Biography</button>
+        </div>
+
+        <div id="instructor-courses-id" class="col-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <span></span>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Sort by:</div>
+                            <a class="dropdown-item" href="#">Rating</a>
+                            <a class="dropdown-item" href="#">Uplaod date</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="card border-bottom-info h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+
+                                        <img class="col-12" src="./assets/images/c1.jpg" alt="Card image cap" height="150px">
+                                        <div class="col-12">
+                                            <div class="text-lg font-weight-bold text-dark text-uppercase mb-1">
+                                                <a routerLink="/courses/details" class="text-dark" style="text-decoration: none;">Course title</a>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="far fa-star text-warning"></i>
+
+                                                    <strong class="col-lg-8 col-md-8 col-12 text-success">4.5</strong>
+                                                </div>
+                                                <span class="text-secondary">350 reviews</span>
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                $40,000
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="card border-bottom-info h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+
+                                        <img class="col-12" src="./assets/images/header-image.jpg" alt="Card image cap" height="150px">
+                                        <div class="col-12">
+                                            <div class="text-lg font-weight-bold text-dark text-uppercase mb-1">
+                                                <a routerLink="/courses/details" class="text-dark" style="text-decoration: none;">Course title</a>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="far fa-star text-warning"></i>
+
+                                                    <strong class="col-lg-8 col-md-8 col-12 text-success">4.5</strong>
+                                                </div>
+                                                <span class="text-secondary">350 reviews</span>
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                $40,000
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="card border-bottom-info h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+
+                                        <img class="col-12" src="./assets/images/home-office-336377__340.webp" alt="Card image cap" height="150px">
+                                        <div class="col-12">
+                                            <div class="text-lg font-weight-bold text-dark text-uppercase mb-1">
+                                                <a routerLink="/courses/details" class="text-dark" style="text-decoration: none;">Course title</a>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="far fa-star text-warning"></i>
+
+                                                    <strong class="col-lg-8 col-md-8 col-12 text-success">4.5</strong>
+                                                </div>
+                                                <span class="text-secondary">350 reviews</span>
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                $40,000
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="card border-bottom-info h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+
+                                        <img class="col-12" src="./assets/images/laptop-336378_1920.jpg" alt="Card image cap" height="150px">
+                                        <div class="col-12">
+                                            <div class="text-lg font-weight-bold text-dark text-uppercase mb-1">
+                                                <a routerLink="/courses/details" class="text-dark" style="text-decoration: none;">Course title</a>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="far fa-star text-warning"></i>
+
+                                                    <strong class="col-lg-8 col-md-8 col-12 text-success">4.5</strong>
+                                                </div>
+                                                <span class="text-secondary">350 reviews</span>
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                $40,000
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="card border-bottom-info h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+
+                                        <img class="col-12" src="./assets/images/mobile-phone-1917737_1920.jpg" alt="Card image cap" height="150px">
+                                        <div class="col-12">
+                                            <div class="text-lg font-weight-bold text-dark text-uppercase mb-1">
+                                                <a routerLink="/courses/details" class="text-dark" style="text-decoration: none;">Course title</a>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="fas fa-star text-warning"></i>
+                                                    <i class="far fa-star text-warning"></i>
+
+                                                    <strong class="col-lg-8 col-md-8 col-12 text-success">4.5</strong>
+                                                </div>
+                                                <span class="text-secondary">350 reviews</span>
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                $40,000
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="instructor-biography-id" class="col-12 instructor-biography">
+            <div class="row">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Introduction</h6>
+                    </div>
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, cum illum. Amet, voluptatem tempore. Aspernatur nihil labore culpa ab fugit quidem? Quam sapiente cum nesciunt tenetur, optio deleniti fuga enim ipsam possimus nobis quia deserunt, voluptas
+                        odio asperiores repellendus iure quis pariatur incidunt nemo doloremque labore quidem tempora obcaecati sequi! Veritatis fugit voluptate ullam reprehenderit, eos libero pariatur non ea quis excepturi quibusdam odit accusantium
+                        aut nisi commodi. Saepe, quis nobis consequatur inventore, id repellat recusandae a rem iste blanditiis neque hic. Laudantium reiciendis voluptatem facilis! Iste quia quas nisi quo eum delectus ducimus recusandae accusamus nulla,
+                        maxime dicta perspiciatis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam cupiditate id provident omnis velit aliquam similique sint nobis tempora! Assumenda.
+                    </div>
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Experience</h6>
+                    </div>
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, cum illum. Amet, voluptatem tempore. Aspernatur nihil labore culpa ab fugit quidem? Quam sapiente cum nesciunt tenetur, optio deleniti fuga enim ipsam possimus nobis quia deserunt, voluptas
+                        odio asperiores repellendus iure quis pariatur incidunt nemo doloremque labore quidem tempora obcaecati sequi! Veritatis fugit voluptate ullam reprehenderit, eos libero pariatur non ea quis excepturi quibusdam odit accusantium
+                        aut nisi commodi. Saepe, quis nobis consequatur inventore, id repellat recusandae a rem iste blanditiis neque hic. Laudantium reiciendis voluptatem facilis! Iste quia quas nisi quo eum delectus ducimus recusandae accusamus nulla,
+                        maxime dicta perspiciatis.
+                    </div>
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Education</h6>
+                    </div>
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, cum illum. Amet, voluptatem tempore. Aspernatur nihil labore culpa ab fugit quidem? Quam sapiente cum nesciunt tenetur, optio deleniti fuga enim ipsam possimus nobis quia deserunt, voluptas
+                        odio asperiores repellendus iure quis pariatur incidunt nemo doloremque labore quidem tempora obcaecati sequi! Veritatis fugit voluptate ullam reprehenderit, eos libero pariatur non ea quis excepturi quibusdam odit accusantium
+                        aut nisi commodi. Saepe, quis nobis consequatur inventore, id repellat recusandae a rem iste blanditiis neque hic. Laudantium reiciendis voluptatem facilis! Iste quia quas nisi quo eum delectus ducimus recusandae accusamus nulla,
+                        maxime dicta perspiciatis.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

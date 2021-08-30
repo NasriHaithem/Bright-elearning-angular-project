@@ -1,0 +1,83 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion h-100" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/courses">
+        <div class="sidebar-brand-icon rotate-n-15 text-info">
+            <i class="fas fa-tv"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3 text-info" style="font-family: 'Pacifico', cursive; font-size: 2rem; text-transform: capitalize;">Bright</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <!-- Admin items -->
+
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/categories/list" routerLinkActive="active">
+            <i class="fab fa-elementor"></i>
+            <span>Categories Management</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/courses/list" routerLinkActive="active">
+            <i class="fab fa-product-hunt"></i>
+            <span>Courses Management</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/instructors/list" routerLinkActive="active">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Instructors Management</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/students/list" routerLinkActive="active">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>Students Management</span>
+        </a>
+    </li>
+
+    <!-- Instructors items -->
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/instructor/courses/list" routerLinkActive="active">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>My Courses</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/instructor/students/list" routerLinkActive="active">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>My Students</span>
+        </a>
+    </li>
+
+    <!-- Students items -->
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/student/courses/list" routerLinkActive="active">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>My Learnings</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle" (click)="toggleSideBar()"></button>
+    </div>
+
+</ul>
+<!-- End of Sidebar -->

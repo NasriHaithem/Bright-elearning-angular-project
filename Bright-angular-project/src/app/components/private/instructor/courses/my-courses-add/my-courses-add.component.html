@@ -1,0 +1,133 @@
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <app-topbar></app-topbar>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Add Product</h1>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-info">Add product's details</h6>
+                    </div>
+
+                    <div class="card-body">
+                        <pre>{{courseDetailsForm.value | json}}</pre>
+                        <form [formGroup]="courseDetailsForm">
+                            <div class="form-group">
+                                <label for="title">Title : </label>
+                                <input formControlName="title" type="text" id="title" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="overview">Overview : </label>
+                                <textarea formControlName="overview" class="form-control" id="overview" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Price : </label>
+                                <input formControlName="price" type="text" id="price" class="form-control">
+                            </div>
+
+                            <!--LOOP THROUGH MODULES ARRAY IN 'courseDetailsForm' MAIN FORM GROUP-->
+                            <div class="card ">
+                                <div class="card p-3 mb-3 border-info" formArrayName="modules" *ngFor="let module of modules.controls; let i=index">
+                                    <div [formGroupName]="i">
+                                        <div class="form-group ml-1">
+                                            <label [attr.for]="'moduleTitle' + i">Module {{i+1}} : </label>
+                                            <div class="lessons-inputs">
+                                                <input formControlName="moduleTitle" type="text" [id]="'moduleTitle' + i" class="form-control">
+                                                <i class="fas fa-times-circle text-danger" (click)="removeModuleClickEvent(i)" *ngIf="modules.length>1"></i>
+                                            </div>
+                                        </div>
+                                        <!--LOOP THROUGH LESSONS ARRAY IN THE i'TH FORM GROUP ELEMENT IN 'modules' ARRAY-->
+                                        <div class="card p-3 mb-3 border-primary" formArrayName="lessons" *ngFor="let lesson of modules.at(i).get('lessons').controls; let j=index">
+                                            <div [formGroupName]="j">
+                                                <div class="form-group ml-1">
+                                                    <label [attr.for]="'lessonTitle'+ j +'-'+ i">lesson {{j+1}} : </label>
+                                                    <div class="lessons-inputs">
+                                                        <input formControlName="lessonTitle" type="text" [id]="'lessonTitle'+ j +'-'+ i" class="form-control">
+                                                        <i class="fas fa-plus-square text-success" (click)="addLessonClickEvent(i,j)"></i>
+                                                        <i class="fas fa-times-circle text-danger" (click)="removeLessonClickEvent(i,j)" *ngIf="modules.at(i).get('lessons').length>1"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ml-1">
+                                                    <label [attr.for]="'lessonDescription'+ j +'-'+ i">lesson's Description : </label>
+                                                    <textarea formControlName="lessonDescription" class="form-control" [id]="'lessonDescription'+ j +'-'+ i" rows="3"></textarea>
+                                                </div>
+                                                <div class="form-group ml-1">
+                                                    <label [attr.for]="'lessonVideo'+ j +'-'+ i">lesson's Video : </label>
+                                                    <input formControlName="lessonVideo" type="file" [id]="'lessonVideo'+ j +'-'+ i" class="form-control-file">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-secondary" (click)="addModuleClickEvent()">Add module</button>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Course image : </label>
+                                <input formControlName="image" type="file" id="image" class="form-control-file">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Category : </label>
+                                <select formControlName="category" class="custom-select" id="category">
+                                    <option selected disabled>Choose category</option>
+                                    <option>Smartphones</option>
+                                    <option>Laptops</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="difficulty">Difficulty : </label>
+                                <select formControlName="difficulty" class="custom-select" id="difficulty">
+                                    <option selected disabled>Choose category</option>
+                                    <option>Advanced</option>
+                                    <option>Intermediate</option>
+                                    <option>Beginner</option>
+                                </select>
+                            </div>
+
+                            <button class="btn btn-sm btn-info mt-3">Add</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2019</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>

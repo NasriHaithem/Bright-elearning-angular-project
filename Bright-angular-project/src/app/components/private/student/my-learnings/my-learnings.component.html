@@ -1,0 +1,118 @@
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <app-topbar></app-topbar>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">My Courses Management</h1>
+                </div>
+
+            </div>
+            <div class="col ml-2">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-info">My Courses List</h6>
+                        <div class="dropdown no-arrow">
+                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                <div class="dropdown-header">Sort by:</div>
+                                <a class="dropdown-item" href="#">Courses titles</a>
+                                <a class="dropdown-item" href="#">Instructors names</a>
+                                <a class="dropdown-item" href="#">Category</a>
+                                <a class="dropdown-item" href="#">Price</a>
+                                <a class="dropdown-item" href="#">Progress</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Image </th>
+                                    <th>Title</th>
+                                    <th>Instructor</th>
+                                    <th>Date of enroll</th>
+                                    <th>Category</th>
+                                    <th>Progress</th>
+                                    <th>Price</th>
+                                    <th>#</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img src="http://placehold.it/700x400" width="150" height="100">
+                                    </td>
+                                    <td class="align-middle">Web Design Fundamentals</td>
+                                    <td class="align-middle">Haithem Nasri</td>
+                                    <td class="align-middle">Sat, 1 Jan 2021</td>
+                                    <td class="align-middle">Web Development</td>
+                                    <td class="align-middle">
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">$900</td>
+                                    <td class="align-middle">
+                                        <a class="btn btn-sm btn-light" routerLink="/student/courses/content">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="http://placehold.it/700x400" width="150" height="100"> </td>
+                                    <td class="align-middle">DevOps basics</td>
+                                    <td class="align-middle">Mohamed Amine</td>
+                                    <td class="align-middle">Tue, 10 Mar 2021</td>
+                                    <td class="align-middle">DevOps</td>
+                                    <td class="align-middle">
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">$1500</td>
+                                    <td class="align-middle">
+                                        <a class="btn btn-sm btn-light" routerLink="/student/courses/content">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2019</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>

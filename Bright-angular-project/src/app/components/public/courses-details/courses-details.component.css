@@ -1,0 +1,198 @@
+video {
+    width: 100%;
+    height: auto;
+}
+
+.jumbotron {
+    color: #fff;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(4, 25, 54, 0.9)));
+    background-image: linear-gradient(180deg, rgba(4, 25, 54, 0.80), rgba(4, 25, 54, 0.80)), url("../../../../assets/images/header-image.jpg");
+    background-position: center center;
+    background-size: cover;
+    height: 400px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    padding: 12px;
+}
+
+.jumbotron ul li {
+    margin-right: 10px;
+}
+
+
+/*      COURSE FEATURES AND ENROLL SECTION */
+
+.course-enroll {
+    border-radius: 20px;
+    height: auto;
+    background-color: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.course-enroll .introduction-video {
+    background-image: linear-gradient(rgba(160, 160, 233, 0.72), rgba(160, 160, 233, 0.73)), url("../../../../assets/images/teacher.jpg");
+    background-position: center center;
+    height: 200px;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.course-enroll .introduction-video .trigger-video-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.course-enroll .introduction-video .trigger-video-btn:hover {
+    box-shadow: #36b9cc 0px 2px 70px 4px;
+    transform: scale(1.2);
+}
+
+.course-enroll .price-features {
+    color: #647b9c;
+    padding: 5px 20px 5px 20px;
+    font-size: 15px;
+}
+
+.course-enroll .price-features .price {
+    margin-bottom: 20px;
+}
+
+.course-enroll .price-features .price strong {
+    font-weight: 200px;
+    font-size: 40px;
+    line-height: 40px;
+}
+
+.course-enroll .price-features .features .features-icon {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.course-enroll .price-features .features .features-icon div {
+    width: 50%;
+    margin: 10px 0;
+}
+
+.course-enroll .price-features .features .features-icon div i {
+    margin-right: 8px;
+}
+
+.course-enroll .enroll {
+    padding-bottom: 10px;
+}
+
+.course-enroll .enroll .enroll-button {
+    width: 80%;
+    margin: 1.5rem auto 10px;
+    display: flex;
+    height: 54px;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*instructor details*/
+
+.instructor-image {
+    height: 200px;
+    margin-right: 30px;
+}
+
+.instructor-image img {
+    border-radius: 20px;
+    width: 100%;
+    height: 80%;
+}
+
+.instructor-image ul {
+    list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.instructor-image ul li a {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    color: #4a5682;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dbe2ef;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+.instructor-image ul li a:hover {
+    color: #36b9cc;
+}
+
+
+/*REVIEW CARD*/
+
+.review-header {
+    display: flex;
+    padding: 0;
+}
+
+.review-header img {
+    margin-right: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.review-header div {
+    margin-top: 5px;
+    line-height: 5px;
+}
+
+.review-header .review-stars {
+    margin-left: auto;
+}
+
+
+/*MEDIA QUERIES*/
+
+@media only screen and (min-width:768px)and (max-width: 1200px) {
+    .course-enroll .price-features .features .features-icon {
+        flex-direction: column;
+    }
+    .course-enroll .price-features .features .features-icon div {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .instructor-image {
+        width: 200px;
+        height: 200px;
+        margin-right: 0;
+        margin-bottom: 50px;
+    }
+    .review-header {
+        flex-direction: column;
+    }
+    .review-header .review-stars {
+        margin-left: unset;
+    }
+}
