@@ -9,6 +9,7 @@ import { StudentsListComponent } from './components/private/admin/students/stude
 import { MyCoursesAddComponent } from './components/private/instructor/courses/my-courses-add/my-courses-add.component';
 import { MyCoursesListComponent } from './components/private/instructor/courses/my-courses-list/my-courses-list.component';
 import { MyCoursesUpdateComponent } from './components/private/instructor/courses/my-courses-update/my-courses-update.component';
+import { MyStudentsListComponent } from './components/private/instructor/students/my-students-list/my-students-list.component';
 import { DashboardComponent } from './components/private/shared/dashboard/dashboard.component';
 import { MyLearningsContentComponent } from './components/private/student/my-learnings-content/my-learnings-content.component';
 import { MyLearningsComponent } from './components/private/student/my-learnings/my-learnings.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path: 'instructor/courses/list', component:MyCoursesListComponent},
   {path: 'instructor/courses/add', component:MyCoursesAddComponent},
   {path: 'instructor/courses/update', component:MyCoursesUpdateComponent},
+  {path: 'instructor/students/list', component:MyStudentsListComponent},
 
 ];
 

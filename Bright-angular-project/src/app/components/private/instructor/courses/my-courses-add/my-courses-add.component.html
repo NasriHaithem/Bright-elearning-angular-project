@@ -49,6 +49,7 @@
 
                             <!--LOOP THROUGH MODULES ARRAY IN 'courseDetailsForm' MAIN FORM GROUP-->
                             <div class="card ">
+                                <h4>Course Curriculum</h4>
                                 <div class="card p-3 mb-3 border-info" formArrayName="modules" *ngFor="let module of modules.controls; let i=index">
                                     <div [formGroupName]="i">
                                         <div class="form-group ml-1">

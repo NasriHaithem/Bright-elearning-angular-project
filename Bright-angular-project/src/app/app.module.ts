@@ -27,6 +27,7 @@ import { ContentSidebarComponent } from './components/private/student/my-learnin
 import { MyCoursesListComponent } from './components/private/instructor/courses/my-courses-list/my-courses-list.component';
 import { MyCoursesAddComponent } from './components/private/instructor/courses/my-courses-add/my-courses-add.component';
 import { MyCoursesUpdateComponent } from './components/private/instructor/courses/my-courses-update/my-courses-update.component';
+import { MyStudentsListComponent } from './components/private/instructor/students/my-students-list/my-students-list.component';
 
 
 @NgModule({
@@ -55,12 +56,13 @@ import { MyCoursesUpdateComponent } from './components/private/instructor/course
     MyCoursesListComponent,
     MyCoursesAddComponent,
     MyCoursesUpdateComponent,
+    MyStudentsListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
