@@ -1,47 +1,71 @@
 <app-navbar></app-navbar>
-<div class="container-fluid bg-gradient-info" style="margin-top: 100px;">
-    <div class="container" style="height: 86.6vh;">
-
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-xl-10 col-lg-12 col-md-9 mt-5">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                                    </div>
-                                    <form class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
-                                        </div>
-
-                                        <a href="./../index.html" class="btn btn-info btn-user btn-block">
-                                          Login
-                                        </a>
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" routerLink="/register">Create an Account!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<div class="box" style="margin-top: 100px;">
+    <div class="forms-box">
+        <div class="student-teacher">
+            <form class="sign-in-student user" [formGroup]="studentLoginForm" (ngSubmit)="studentLogin()">
+                <h2 class="title">Sign in as a Student</h2>
+                <div class="form-group mt-4">
+                    <input type="email" class="form-control form-control-user" style="width: 100%;" id="studentEmailId" aria-describedby="emailHelp" formControlName="studentEmail" placeholder="Enter Email Address..." [ngClass]="{'is-invalid' : studentEmail?.touched && studentEmail?.invalid, 'is-valid' : studentEmail?.touched && !studentEmail?.invalid}">
+                    <div *ngIf="studentEmail?.touched && studentEmail?.invalid">
+                        <small *ngIf="studentEmail?.errors?.required" class="text-danger">*Email is required<br></small>
+                        <small *ngIf="studentEmail?.errors?.studentEmail" class="text-danger">*Invalid Email<br></small>
                     </div>
                 </div>
+                <div class="form-group mb-3">
+                    <input type="password" class="form-control form-control-user" id="studentPasswordId" formControlName="studentPassword" placeholder="Password" [ngClass]="{'is-invalid' : studentPassword?.touched && studentPassword?.invalid, 'is-valid' : studentPassword?.touched && !studentPassword?.invalid}">
+                    <div *ngIf="studentPassword?.touched && studentPassword?.invalid">
+                        <small *ngIf="studentPassword?.errors?.required" class="text-danger">*Password is required<br></small>
+                        <small *ngIf="studentPassword?.errors?.minlength" class="text-danger">*Password must contain 8 characters at least</small>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info btn-user mt-3" style="width: 200px;">Login</button>
 
-            </div>
-
+            </form>
+            <form class="sign-in-teacher user" [formGroup]="teacherLoginForm" (ngSubmit)="teacherLogin()">
+                <h2 class="title">Sign in as a Teacher</h2>
+                <div class="form-group mt-4">
+                    <input type="email" class="form-control form-control-user" id="teacherEmailId" aria-describedby="emailHelp" formControlName="teacherEmail" placeholder="Enter Email Address..." [ngClass]="{'is-invalid' : teacherEmail?.touched && teacherEmail?.invalid, 'is-valid' : teacherEmail?.touched && !teacherEmail?.invalid}">
+                    <div *ngIf="teacherEmail?.touched && teacherEmail?.invalid">
+                        <small *ngIf="teacherEmail?.errors?.required" class="text-danger">*Email is required<br></small>
+                        <small *ngIf="teacherEmail?.errors?.email" class="text-danger">*Invalid Email<br></small>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <input type="password" class="form-control form-control-user" id="teacherPasswordId" formControlName="teacherPassword" placeholder="Password" [ngClass]="{'is-invalid' : teacherPassword?.touched && teacherPassword?.invalid, 'is-valid' : teacherPassword?.touched && !teacherPassword?.invalid}">
+                    <div *ngIf="teacherPassword?.touched && teacherPassword?.invalid">
+                        <small *ngIf="teacherPassword?.errors?.required" class="text-danger">*Password is required<br></small>
+                        <small *ngIf="teacherPassword?.errors?.minlength" class="text-danger">*Password must contain 8 characters at least</small>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info btn-user mt-3" style="width: 200px;">Login</button>
+            </form>
         </div>
+    </div>
 
+    <div class="panels-box">
+        <div class="panel left-panel">
+            <div class="content">
+                <h3>You are a Teacher ?</h3>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, ex ratione. Aliquid!
+                </p>
+                <button class="boutton transparent" (click)="addTeacherFormToggledClass()">
+                    Sign in
+                </button>
+            </div>
+            <img src="../../../../assets/images/courses-bg.svg" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+            <div class="content">
+                <h3>You are a Student ?</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laboriosam ad deleniti.
+                </p>
+                <button class="boutton transparent" (click)="removeTeacherFormToggledClass()">
+            Sign in
+          </button>
+            </div>
+            <img src="../../../../assets/images/student.svg" class="image" alt="" />
+        </div>
     </div>
 </div>
