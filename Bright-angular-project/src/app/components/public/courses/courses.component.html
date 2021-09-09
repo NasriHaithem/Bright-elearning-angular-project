@@ -40,6 +40,12 @@
                                 </label>
                         </div>
                         <!-- THE REST OF THE COURSE CATEGORIES IN HERE-->
+                        <div class="form-check" *ngFor="let category of allCategories">
+                            <input class="form-check-input shadow-none" type="radio" name="radio-for-categories" [id]="category.categoryName">
+                            <label class="form-check-label" [attr.for]="category.categoryName">
+                                    {{category.categoryName | titlecase}}
+                                </label>
+                        </div>
                     </div>
 
                     <!--By difficulty-->
@@ -148,15 +154,15 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 mb-3">
+                        <div class="col-lg-4 col-md-3 col-12 mb-3" *ngFor="let course of allCourses">
                             <div class="card border-bottom-info h-100 py-2">
                                 <div class="card-body">
-                                    <div class="row align-items-center">
+                                    <div class="column align-items-center">
 
-                                        <img class="col-md-4" src="./assets/images/home-office-336377__340.webp" alt="Card image cap" height="150px">
-                                        <div class="col-md-8">
+                                        <img class="col-12" [src]="course.course_image" alt="Card image cap" height="150px">
+                                        <div class="col-12">
                                             <div class="text-lg font-weight-bold text-dark text-uppercase mb-1">
-                                                <a routerLink="/courses/details" class="text-dark" style="text-decoration: none;">Course title</a>
+                                                <a routerLink="/courses/details" class="text-dark" style="text-decoration: none;">{{course.title}}</a>
                                             </div>
                                             <div>
                                                 <div>
@@ -171,68 +177,7 @@
                                                 <span class="text-secondary">350 reviews</span>
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                $40,000
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="card border-bottom-info h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row align-items-center">
-
-                                        <img class="col-md-4" src="./assets/images/office-620822__340.webp" alt="Card image cap" height="150px">
-                                        <div class="col-md-8">
-                                            <div class="text-lg font-weight-bold text-dark text-uppercase mb-1">
-                                                <a routerLink="/courses/details" class="text-dark" style="text-decoration: none;">Course title</a>
-                                            </div>
-                                            <div>
-                                                <div>
-                                                    <i class="fas fa-star text-warning"></i>
-                                                    <i class="fas fa-star text-warning"></i>
-                                                    <i class="fas fa-star text-warning"></i>
-                                                    <i class="fas fa-star text-warning"></i>
-                                                    <i class="far fa-star text-warning"></i>
-
-                                                    <strong class="col-lg-8 col-md-8 col-12 text-success">4.5</strong>
-                                                </div>
-                                                <span class="text-secondary">350 reviews</span>
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                $40,000
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="card border-bottom-info h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row align-items-center">
-
-                                        <img class="col-md-4" src="./assets/images/mobile-605422_1920.jpg" alt="Card image cap" height="150px">
-                                        <div class="col-md-8">
-                                            <div class="text-lg font-weight-bold text-dark text-uppercase mb-1">
-                                                <a routerLink="/courses/details" class="text-dark" style="text-decoration: none;">Course title</a>
-                                            </div>
-                                            <div>
-                                                <div>
-                                                    <i class="fas fa-star text-warning"></i>
-                                                    <i class="fas fa-star text-warning"></i>
-                                                    <i class="fas fa-star text-warning"></i>
-                                                    <i class="fas fa-star text-warning"></i>
-                                                    <i class="far fa-star text-warning"></i>
-
-                                                    <strong class="col-lg-8 col-md-8 col-12 text-success">4.5</strong>
-                                                </div>
-                                                <span class="text-secondary">350 reviews</span>
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                $40,000
+                                                ${{course.price}}
                                             </div>
                                         </div>
                                     </div>

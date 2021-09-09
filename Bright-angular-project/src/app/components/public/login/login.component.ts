@@ -1,5 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Instructor } from 'src/app/models/instructor/instructor';
+import { Student } from 'src/app/models/student/student';
+import { InstructorService } from 'src/app/service/instructor/instructor.service';
+import { StudentService } from 'src/app/service/student/student.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +19,12 @@ export class LoginComponent implements OnInit {
   studentLoginForm: FormGroup
   teacherLoginForm: FormGroup
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private studenService: StudentService,
+    private instructorService :InstructorService,
+    private router: Router
+    ) {
 
     let studentFormControls = {
       studentEmail: new FormControl('',[
@@ -50,11 +60,41 @@ export class LoginComponent implements OnInit {
 
   studentLogin(){
     let data = this.studentLoginForm.value;
-    console.log(data);
+    let student = new Student(
+      undefined,
+      undefined,
+      undefined,
+      data.studentEmail,
+      data.studentPassword
+    )
+    this.studenService.loginStudent(student).subscribe(
+      (result) =>{
+        let token = result.token;
+        localStorage.setItem("myToken", token)
+        this.router.navigate(['/courses']);
+        console.log(result);
+      },
+      (err) => console.log(err)  
+    )
   }
   teacherLogin(){
     let data = this.teacherLoginForm.value;
-    console.log(data);
+    let instructor = new Instructor(
+      undefined,
+      undefined,
+      undefined,
+      data.teacherEmail,
+      data.teacherPassword
+    )
+    this.instructorService.loginInstructor(instructor).subscribe(
+      (result) =>{
+        let token = result.token;
+        localStorage.setItem("myToken", token)
+        this.router.navigate(['/dashboard']);
+        console.log(result);
+      },
+      (err) => console.log(err)  
+    )
   }
 
 

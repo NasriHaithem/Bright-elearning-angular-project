@@ -31,7 +31,7 @@
 
                     <div class="card-body">
                         <pre>{{courseDetailsForm.value | json}}</pre>
-                        <form [formGroup]="courseDetailsForm">
+                        <form [formGroup]="courseDetailsForm" (ngSubmit)="submitCourse()">
                             <div class="form-group">
                                 <label for="title">Title : </label>
                                 <input formControlName="title" type="text" id="title" class="form-control">
@@ -86,16 +86,25 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="image">Course image : </label>
-                                <input formControlName="image" type="file" id="image" class="form-control-file">
+                                <label for="course_image">Course image : </label>
+                                <input formControlName="course_image" type="file" id="course_image" class="form-control-file" name="course_image" (change)="onImageChange($event)">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="introduction_video">Course Introduction video : </label>
+                                <input formControlName="introduction_video" type="file" id="introduction_video" class="form-control-file" name="introduction_video" (change)="onVideoChange($event)">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="estimated_duration">Course estimated duration : </label>
+                                <input formControlName="estimated_duration" type="text" id="estimated_duration" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label for="category">Category : </label>
                                 <select formControlName="category" class="custom-select" id="category">
                                     <option selected disabled>Choose category</option>
-                                    <option>Smartphones</option>
-                                    <option>Laptops</option>
+                                    <option [value]="category.id" *ngFor="let category of allCategories">{{category.categoryName | titlecase}} </option>
                                 </select>
                             </div>
 
@@ -109,7 +118,7 @@
                                 </select>
                             </div>
 
-                            <button class="btn btn-sm btn-info mt-3">Add</button>
+                            <button class="btn btn-sm btn-info mt-3" type="submit">Add</button>
                         </form>
 
                     </div>

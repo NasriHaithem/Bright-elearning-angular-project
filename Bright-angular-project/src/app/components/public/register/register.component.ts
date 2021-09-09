@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Instructor } from 'src/app/models/instructor/instructor';
+import { Student } from 'src/app/models/student/student';
+import { InstructorService } from 'src/app/service/instructor/instructor.service';
+import { StudentService } from 'src/app/service/student/student.service';
 
 @Component({
   selector: 'app-register',
@@ -7,64 +12,69 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  
+
   ngOnInit(): void {
   }
 
   studentRegisterForm: FormGroup
   teacherRegisterForm: FormGroup
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private studentService: StudentService,
+    private instructorService: InstructorService,
+    private router: Router
+  ) {
 
     let studentFormControls = {
-      studentFirstname: new FormControl('',[
+      studentFirstname: new FormControl('', [
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
       ]),
-      studentLastname: new FormControl('',[
+      studentLastname: new FormControl('', [
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
       ]),
-      studentEmail: new FormControl('',[
+      studentEmail: new FormControl('', [
         Validators.required,
         Validators.email
       ]),
-      studentPassword: new FormControl('',[
+      studentPassword: new FormControl('', [
         Validators.required,
         Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[\.#?!@$%^&*-]).{0,}$"),
         Validators.minLength(8)
       ]),
-      studentRepassword: new FormControl('',[
+      studentRepassword: new FormControl('', [
         Validators.required,
       ])
     }
 
     let teacherFormControls = {
-      teacherFirstname: new FormControl('',[
+      teacherFirstname: new FormControl('', [
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
       ]),
-      teacherLastname: new FormControl('',[
+      teacherLastname: new FormControl('', [
         Validators.required,
         Validators.pattern("[A-Za-z .'-]+"),
         Validators.minLength(2)
       ]),
-      teacherEmail: new FormControl('',[
+      teacherEmail: new FormControl('', [
         Validators.required,
         Validators.email
       ]),
-      teacherProfession: new FormControl('',[
+      teacherProfession: new FormControl('', [
         Validators.required
       ]),
-      teacherPassword: new FormControl('',[
+      teacherPassword: new FormControl('', [
         Validators.required,
         Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[\.#?!@$%^&*-]).{0,}$"),
         Validators.minLength(8)
       ]),
-      teacherRepassword: new FormControl('',[
+      teacherRepassword: new FormControl('', [
         Validators.required,
       ])
     }
@@ -88,13 +98,44 @@ export class RegisterComponent implements OnInit {
   get teacherRepassword() { return this.teacherRegisterForm.get('teacherRepassword') }
 
 
-  studentRegister(){
+  studentRegister() {
     let data = this.studentRegisterForm.value;
-    console.log(data);   
+    let newStudent = new Student(
+      undefined,
+      data.studentFirstname,
+      data.studentLastname,
+      data.studentEmail,
+      data.studentPassword,
+    )
+    this.studentService.registerStudent(newStudent).subscribe(
+      (result) => {
+        this.router.navigate(['/login']);
+        console.log("result: \n");
+        console.log(result);
+        
+      },
+      (err) => console.log(err)  
+    )
   }
-  teacherRegister(){
+  teacherRegister() {
     let data = this.teacherRegisterForm.value;
-    console.log(data);   
+    let newInstructor = new Instructor(
+      undefined,
+      data.teacherFirstname,
+      data.teacherLastname,
+      data.teacherEmail,
+      data.teacherPassword,
+      data.teacherProfession
+    )
+    this.instructorService.registerInstructor(newInstructor).subscribe(
+      (result) => {
+        this.router.navigate(['/login']);
+        console.log("result: \n");
+        console.log(result);
+        
+      },
+      (err) => console.log(err)  
+    )
   }
 
 

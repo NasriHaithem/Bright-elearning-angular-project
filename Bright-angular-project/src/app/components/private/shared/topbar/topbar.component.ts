@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
@@ -12,12 +13,16 @@ export class TopbarComponent implements OnInit {
       mySideBar.classList.remove('collapse')
     }    
   }
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
   toggleSideBar(){
     const mySideBar = document.getElementById('accordionSidebar');
     mySideBar.classList.toggle("collapse");  
+  }
+  logout(){
+    localStorage.removeItem("myToken");
+    this.router.navigate(['/login']);
   }
 }

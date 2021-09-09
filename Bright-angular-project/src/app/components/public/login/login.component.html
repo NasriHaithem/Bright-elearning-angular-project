@@ -18,7 +18,7 @@
                         <small *ngIf="studentPassword?.errors?.minlength" class="text-danger">*Password must contain 8 characters at least</small>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-info btn-user mt-3" style="width: 200px;">Login</button>
+                <button type="submit" class="btn btn-info btn-user mt-3" style="width: 200px;" [disabled]="studentLoginForm.invalid">Login</button>
 
             </form>
             <form class="sign-in-teacher user" [formGroup]="teacherLoginForm" (ngSubmit)="teacherLogin()">
@@ -37,7 +37,7 @@
                         <small *ngIf="teacherPassword?.errors?.minlength" class="text-danger">*Password must contain 8 characters at least</small>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-info btn-user mt-3" style="width: 200px;">Login</button>
+                <button type="submit" class="btn btn-info btn-user mt-3" style="width: 200px;" [disabled]="teacherLoginForm.invalid">Login</button>
             </form>
         </div>
     </div>
