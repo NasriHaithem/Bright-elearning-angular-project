@@ -38,7 +38,7 @@
                                     <small *ngIf="categoryName?.errors?.required" class="text-danger">*Category name is required<br></small>
                                     <small *ngIf="categoryName?.errors?.minlength" class="text-danger">*Category name must contain 2 characters at least<br></small>
                                 </div>
-                                <button class="btn btn-sm btn-warning mt-3" [disabled]="updateCategoryForm.invalid">Update</button>
+                                <button class="btn btn-sm btn-warning mt-3" [disabled]="updateCategoryForm.invalid" type="submit">Update</button>
                             </div>
                         </form>
                     </div>

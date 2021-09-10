@@ -16,19 +16,6 @@
                     <h6 class="m-0 font-weight-bold text-dark">Filter Courses</h6>
                 </div>
                 <div class="card-body">
-
-                    <!--Search for Courses-->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-info" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                            </div>
-                        </div>
-                    </form>
-
                     <!--Filter Courses-->
                     <!--By Category-->
                     <h6 class="m-0 mt-3 font-weight-bold text-secondary">Courses Categories</h6>
@@ -138,7 +125,17 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-dark">Available courses for you</h6>
+                    <!--Search for Courses-->
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-secondary text-white border-0 small" aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                            </div>
+                        </div>
+                    </form>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -154,13 +151,13 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-4 col-md-3 col-12 mb-3" *ngFor="let course of allCourses">
-                            <div class="card border-bottom-info h-100 py-2">
+                        <div class="col-lg-4 col-md-6 col-12 mb-3" *ngFor="let course of allCourses">
+                            <div class="card  h-100 py-2">
                                 <div class="card-body">
                                     <div class="column align-items-center">
 
                                         <img class="col-12" [src]="course.course_image" alt="Card image cap" height="150px">
-                                        <div class="col-12">
+                                        <div class="col-12 pl-4">
                                             <div class="text-lg font-weight-bold text-dark text-uppercase mb-1">
                                                 <a routerLink="/courses/details" class="text-dark" style="text-decoration: none;">{{course.title}}</a>
                                             </div>

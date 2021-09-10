@@ -42,28 +42,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Web Development</td>
+                                <tr *ngFor="let categ of allCategories">
+                                    <td>{{categ.id}}</td>
+                                    <td>{{categ.categoryName}}</td>
                                     <td>
-                                        <a routerLink="/admin/categories/update" class="btn btn-sm btn-warning">
+                                        <a [routerLink]="['/admin/categories/update', categ.id]" class="btn btn-sm btn-warning">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <button class="btn btn-sm btn-danger">
+                                        <button class="btn btn-sm btn-danger" (click)="deleteCategory(categ)">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>DevOps</td>
-                                    <td>
-                                        <a routerLink="/admin/categories/update" class="btn btn-sm btn-warning">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <button class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
                                 </tr>
                             </tbody>
                         </table>

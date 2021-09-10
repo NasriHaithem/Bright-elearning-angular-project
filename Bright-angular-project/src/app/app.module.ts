@@ -29,6 +29,7 @@ import { MyCoursesListComponent } from './components/private/instructor/courses/
 import { MyCoursesAddComponent } from './components/private/instructor/courses/my-courses-add/my-courses-add.component';
 import { MyCoursesUpdateComponent } from './components/private/instructor/courses/my-courses-update/my-courses-update.component';
 import { MyStudentsListComponent } from './components/private/instructor/students/my-students-list/my-students-list.component';
+import { AdminLoginComponent } from './components/public/admin-login/admin-login.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { MyStudentsListComponent } from './components/private/instructor/student
     MyCoursesAddComponent,
     MyCoursesUpdateComponent,
     MyStudentsListComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,

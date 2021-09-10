@@ -18,6 +18,7 @@ export class InstructorService {
   loginInstructor(instructor: Instructor) {
     return this.http.post<any>(this.instructorPath + "login", instructor);
   }
+
   isLoggedInInstructor(){
     let token = localStorage.getItem("myToken");
     if (token) {
@@ -31,5 +32,13 @@ export class InstructorService {
       return false ;
     }
     return false;  
+  }
+
+  getAllInstructors() {
+    return this.http.get<any>(this.instructorPath + "all");
+  }
+
+  updateInstructorState(id: Number) {
+    return this.http.patch<any>(this.instructorPath + `updateState/${id}`, {});
   }
 }

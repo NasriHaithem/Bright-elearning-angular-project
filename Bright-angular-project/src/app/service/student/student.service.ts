@@ -18,6 +18,7 @@ export class StudentService {
   loginStudent(student: Student) {
     return this.http.post<any>(this.studentPath + "login", student);
   }
+
   isLoggedInStudent(){
     let token = localStorage.getItem("myToken");
     if (token) {
@@ -31,5 +32,13 @@ export class StudentService {
       return false ;
     }
     return false;  
+  }
+
+  getAllStudents() {
+    return this.http.get<any>(this.studentPath + "all");
+  }
+
+  updateStudentState(id: Number) {
+    return this.http.patch<any>(this.studentPath + `updateState/${id}`, {});
   }
 }

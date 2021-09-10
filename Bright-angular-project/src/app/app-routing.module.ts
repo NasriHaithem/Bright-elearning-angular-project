@@ -13,6 +13,7 @@ import { MyStudentsListComponent } from './components/private/instructor/student
 import { DashboardComponent } from './components/private/shared/dashboard/dashboard.component';
 import { MyLearningsContentComponent } from './components/private/student/my-learnings-content/my-learnings-content.component';
 import { MyLearningsComponent } from './components/private/student/my-learnings/my-learnings.component';
+import { AdminLoginComponent } from './components/public/admin-login/admin-login.component';
 import { CoursesDetailsComponent } from './components/public/courses-details/courses-details.component';
 import { CoursesComponent } from './components/public/courses/courses.component';
 import { InstructorsDetailsComponent } from './components/public/instructors-details/instructors-details.component';
@@ -30,9 +31,10 @@ const routes: Routes = [
   {path: 'register', component:RegisterComponent},
   {path: 'dashboard', component:DashboardComponent},
 
+  {path: 'admin/login', component:AdminLoginComponent},
   {path: 'admin/categories/list', component:CategoriesListComponent},
   {path: 'admin/categories/add', component:CategoriesAddComponent},
-  {path: 'admin/categories/update', component:CategoriesUpdateComponent},
+  {path: 'admin/categories/update/:id', component:CategoriesUpdateComponent},
   {path: 'admin/courses/list', component:CoursesListComponent},
   {path: 'admin/courses/details', component:CoursesDetailsComponent},
   {path: 'admin/instructors/list', component:InstructorsListComponent},

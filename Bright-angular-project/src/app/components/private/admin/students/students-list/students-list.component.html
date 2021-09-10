@@ -34,7 +34,6 @@
                             <thead>
                                 <tr>
                                     <th>Image</th>
-                                    <th>Username</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email</th>
@@ -43,40 +42,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><img class="rounded-circle" src="http://placehold.it/200x200" width="80" height="80"> </td>
-                                    <td class="align-middle">NouhaNouha</td>
-                                    <td class="align-middle">Nouha</td>
-                                    <td class="align-middle">Ayari</td>
-                                    <td class="align-middle">nouhaa534@gmail.com</td>
-                                    <td class="align-middle">
+                                <tr *ngFor="let student of allStudents">
+                                    <td><img class="rounded-circle" [src]="student.photo" width="80" height="80"> </td>
+                                    <td class="align-middle">{{student.firstname}}</td>
+                                    <td class="align-middle">{{student.lastname}}</td>
+                                    <td class="align-middle">{{student.email}}</td>
+                                    <td class="align-middle" *ngIf="student.isEnabled">
                                         <div class="badge badge-pill badge-success">Active</div>
                                     </td>
-                                    <td class="align-middle">
-                                        <button class="btn btn-sm btn-dark">
-                              <i class="fas fa-user-lock"></i>
-                            </button>
-                                        <button class="btn btn-sm btn-danger">
-                              <i class="fas fa-trash-alt"></i>
-                            </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img class="rounded-circle" src="http://placehold.it/200x200" width="80" height="80"> </td>
-                                    <td class="align-middle">Chedy123</td>
-                                    <td class="align-middle">Chedy</td>
-                                    <td class="align-middle">Ayari</td>
-                                    <td class="align-middle">chedy.ayari@gmail.com</td>
-                                    <td class="align-middle">
+                                    <td class="align-middle" *ngIf="!student.isEnabled">
                                         <div class="badge badge-pill badge-danger">Disabled</div>
                                     </td>
                                     <td class="align-middle">
-                                        <button class="btn btn-sm btn-info">
-                              <i class="fas fa-user-check"></i>
-                            </button>
+                                        <button class="btn btn-sm btn-dark" (click)="updateStudentState(student)">
+                                            <i class="fas fa-user-lock"></i>
+                                        </button>
                                         <button class="btn btn-sm btn-danger">
-                              <i class="fas fa-trash-alt"></i>
-                            </button>
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CourseCategory } from 'src/app/models/courseCategory/course-category';
+import { CategoryService } from 'src/app/service/category/category.service';
 
 @Component({
   selector: 'app-categories-add',
@@ -9,7 +12,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class CategoriesAddComponent implements OnInit {
 
   addCategoryForm: FormGroup
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private categoryService: CategoryService,
+    private router: Router
+    ) {
     let formControls = {
       categoryName: new FormControl('', [
         Validators.required,
@@ -26,7 +33,13 @@ export class CategoriesAddComponent implements OnInit {
 
   addCategory() {
     let data = this.addCategoryForm.value;
-    console.log(data);
+    const newCategory = new CourseCategory(undefined, data.categoryName);
+    this.categoryService.addCategory(newCategory).subscribe(
+      (result) => {
+        this.router.navigate(['/admin/categories/list']);
+      },
+      (err) => console.log(err)
+    )
     
   }
 
