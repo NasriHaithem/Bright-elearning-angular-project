@@ -107,11 +107,12 @@ export class RegisterComponent implements OnInit {
       data.studentEmail,
       data.studentPassword,
     )
+    console.log(newStudent);
     this.studentService.registerStudent(newStudent).subscribe(
       (result) => {
         this.router.navigate(['/login']);
         console.log("result: \n");
-        console.log(result);
+
         
       },
       (err) => console.log(err)  

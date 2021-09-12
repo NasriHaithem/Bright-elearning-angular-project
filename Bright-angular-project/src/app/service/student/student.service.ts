@@ -25,8 +25,9 @@ export class StudentService {
       const helper = new JwtHelperService();
       const decodedToken = helper.decodeToken(token);
       const isEnabled = decodedToken.data.isEnabled;
-      
-      if (isEnabled) {
+      const isStudent = decodedToken.data.role == "student";
+
+      if (isEnabled && isStudent) {
         return true
       }
       return false ;

@@ -6,7 +6,8 @@ export class CourseReview {
         public id?: any,
         public student?: Student,
         public course?: Course,
-        public comment?: String
+        public comment?: String,
+        public review_date?: Date
     ) {}
 }
 /*

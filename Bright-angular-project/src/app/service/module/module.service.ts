@@ -13,4 +13,5 @@ export class ModuleService {
   addModule(module: Module) {
     return this.http.post<any>(this.modulePath + "add", module);
   }
+
 }

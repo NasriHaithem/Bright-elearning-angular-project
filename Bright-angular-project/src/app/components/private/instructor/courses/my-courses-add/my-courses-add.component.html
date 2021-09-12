@@ -30,7 +30,6 @@
                     </div>
 
                     <div class="card-body">
-                        <pre>{{courseDetailsForm.value | json}}</pre>
                         <form [formGroup]="courseDetailsForm" (ngSubmit)="submitCourse()">
                             <div class="form-group">
                                 <label for="title">Title : </label>

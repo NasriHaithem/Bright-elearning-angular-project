@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { CoursesComponent } from './components/public/courses/courses.component';
 import { InstructorsComponent } from './components/public/instructors/instructors.component';
 import { InstructorsDetailsComponent } from './components/public/instructors-details/instructors-details.component';
@@ -24,12 +24,12 @@ import { InstructorsListComponent } from './components/private/admin/instructors
 import { StudentsListComponent } from './components/private/admin/students/students-list/students-list.component';
 import { MyLearningsComponent } from './components/private/student/my-learnings/my-learnings.component';
 import { MyLearningsContentComponent } from './components/private/student/my-learnings-content/my-learnings-content.component';
-import { ContentSidebarComponent } from './components/private/student/my-learnings-content/content-sidebar/content-sidebar.component';
 import { MyCoursesListComponent } from './components/private/instructor/courses/my-courses-list/my-courses-list.component';
 import { MyCoursesAddComponent } from './components/private/instructor/courses/my-courses-add/my-courses-add.component';
 import { MyCoursesUpdateComponent } from './components/private/instructor/courses/my-courses-update/my-courses-update.component';
 import { MyStudentsListComponent } from './components/private/instructor/students/my-students-list/my-students-list.component';
 import { AdminLoginComponent } from './components/public/admin-login/admin-login.component';
+import { LessonContentComponent } from './components/private/student/my-learnings-content/lesson-content/lesson-content.component';
 
 
 @NgModule({
@@ -54,12 +54,12 @@ import { AdminLoginComponent } from './components/public/admin-login/admin-login
     StudentsListComponent,
     MyLearningsComponent,
     MyLearningsContentComponent,
-    ContentSidebarComponent,
     MyCoursesListComponent,
     MyCoursesAddComponent,
     MyCoursesUpdateComponent,
     MyStudentsListComponent,
     AdminLoginComponent,
+    LessonContentComponent,
   ],
   imports: [
     BrowserModule,

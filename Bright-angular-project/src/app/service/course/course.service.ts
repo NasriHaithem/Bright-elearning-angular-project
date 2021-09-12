@@ -13,19 +13,18 @@ export class CourseService {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
-
-    
+ 
     const formaData = new FormData();
     formaData.append("course_image", course_image);
     formaData.append("introduction_video", introduction_video);
     formaData.append("course", JSON.stringify(course));    
-    
-    
-
+ 
     return this.http.post<any>(this.coursePath + "add", formaData, {'headers': headers});
   }
-
   getAllCourses() {
     return this.http.get<any>(this.coursePath + "all");
+  }
+  getCourseById(id: Number) {
+    return this.http.get<any>(this.coursePath + id);
   }
 }

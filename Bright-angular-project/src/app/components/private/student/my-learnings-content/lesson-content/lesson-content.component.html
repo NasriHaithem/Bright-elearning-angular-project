@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="card mb-4" style="width: 100%; height: 500px;">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-info">{{lessonDetails.lessonName}}</h6>
+        </div>
+        <div class="card-body">
+            <video [src]="lessonDetails.lessonVideo" type="video/mp4" controls style="width: 100%; height: 400px;">
+            </video>
+
+        </div>
+    </div>
+    <div class="card mb-4" style="width: 100%; height: auto;">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-info">Lesson's Description</h6>
+        </div>
+        <div class="card-body">{{lessonDetails.description}}</div>
+    </div>
+</div>

@@ -65,7 +65,7 @@
                                     <td class="align-middle">{{course.enrollments.length}}</td>
                                     <td class="align-middle">{{course.price}}</td>
                                     <td class="align-middle">
-                                        <a routerLink="/admin/order/details" class="btn btn-sm btn-light" routerLink="/admin/courses/details">
+                                        <a [routerLink]="['/admin/courses/details', course.id]" class="btn btn-sm btn-light">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                     </td>

@@ -14,6 +14,7 @@ export class Student{
         public ratings?: CourseRate[],
         public enrollments?: Enrollment[],
         public courseReviews?: CourseReview[],
+        public role?: string
     ) {
     }
 }

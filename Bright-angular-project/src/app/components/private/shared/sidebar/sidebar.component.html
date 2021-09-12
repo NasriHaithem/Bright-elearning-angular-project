@@ -13,7 +13,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="isAdminLogged()">
         <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
@@ -24,25 +24,25 @@
     <hr class="sidebar-divider">
 
     <!-- Admin items -->
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="isAdminLogged()">
         <a class="nav-link" routerLink="/admin/categories/list" routerLinkActive="active">
             <i class="fab fa-elementor"></i>
             <span>Categories Management</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="isAdminLogged()">
         <a class="nav-link" routerLink="/admin/courses/list" routerLinkActive="active">
             <i class="fab fa-product-hunt"></i>
             <span>Courses Management</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="isAdminLogged()">
         <a class="nav-link" routerLink="/admin/instructors/list" routerLinkActive="active">
             <i class="fas fa-fw fa-users"></i>
             <span>Instructors Management</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="isAdminLogged()">
         <a class="nav-link" routerLink="/admin/students/list" routerLinkActive="active">
             <i class="fas fa-fw fa-tasks"></i>
             <span>Students Management</span>
@@ -50,13 +50,13 @@
     </li>
 
     <!-- Instructors items -->
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="isInstructorLogged()">
         <a class="nav-link" routerLink="/instructor/courses/list" routerLinkActive="active">
             <i class="fas fa-fw fa-tasks"></i>
             <span>My Courses</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="isInstructorLogged()">
         <a class="nav-link" routerLink="/instructor/students/list" routerLinkActive="active">
             <i class="fas fa-fw fa-tasks"></i>
             <span>My Students</span>
@@ -64,7 +64,7 @@
     </li>
 
     <!-- Students items -->
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="isStudentLogged()">
         <a class="nav-link" routerLink="/student/courses/list" routerLinkActive="active">
             <i class="fas fa-fw fa-tasks"></i>
             <span>My Learnings</span>

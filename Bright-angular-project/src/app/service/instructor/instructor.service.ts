@@ -24,9 +24,9 @@ export class InstructorService {
     if (token) {
       const helper = new JwtHelperService();
       const decodedToken = helper.decodeToken(token);
-      const isEnabled = decodedToken.data.isEnabled;
+      const instructor: Instructor = decodedToken.data;
       
-      if (isEnabled) {
+      if (instructor.isEnabled && instructor.role == "instructor" ) {
         return true
       }
       return false ;
@@ -36,6 +36,10 @@ export class InstructorService {
 
   getAllInstructors() {
     return this.http.get<any>(this.instructorPath + "all");
+  }
+
+  getInstructorById(id:Number) {
+    return this.http.get<any>(this.instructorPath + id);
   }
 
   updateInstructorState(id: Number) {

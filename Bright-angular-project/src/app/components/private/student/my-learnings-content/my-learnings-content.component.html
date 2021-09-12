@@ -1,35 +1,52 @@
+<!--COURSE CURRICULUM CARD -->
+
+
 <app-navbar></app-navbar>
 <div class="container-fluid" style="margin-top: 120px;">
     <div class="row">
         <div class="col-lg-4 order-lg-1 order-2">
-            <app-content-sidebar></app-content-sidebar>
-        </div>
-        <div class="col-lg-8 order-lg-2 order-1">
+            <div class="card shadow mb-4">
+                <div class="card h-100">
+                    <div class="card-header py-3">
+                        <h4 class="m-0 font-weight-bold text-primary">Table of content</h4>
+                    </div>
 
-            <div class="row">
-                <div class="card mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-info">Lesson's Title</h6>
-                    </div>
+                    <!--COURSE MODULES-->
                     <div class="card-body">
-                        <video controls>
-                            <source src="./assets/media/J. Jonah Jameson - could you pay me in advance .mp4" type="video/mp4">
-                            <source src="./assets/media/J. Jonah Jameson - could you pay me in advance .webm" type="video/webm">
-                        </video>
-                    </div>
-                </div>
-                <div class="card mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-info">Lesson's Description</h6>
-                    </div>
-                    <div class="card-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea harum eius, a iusto dignissimos, rerum numquam, nihil laboriosam deserunt obcaecati et earum facilis perferendis quisquam commodi nulla quae modi sequi? Rem sint itaque placeat perferendis voluptate
-                        saepe, accusantium dolorem fugiat molestias quidem provident inventore iste nobis voluptatum, asperiores nam maxime eum dignissimos ullam fugit? Possimus qui excepturi, veritatis nam illum atque cumque pariatur quisquam facere
-                        laborum aperiam nisi iste soluta incidunt quos iure molestias officiis ipsa? Assumenda quasi saepe quibusdam eligendi illum numquam odit recusandae excepturi autem architecto mollitia a, minima repellat laudantium voluptatum aut
-                        aspernatur quaerat dignissimos omnis nostrum!
+                        <div class="card  border-left-info mb-4" *ngFor="let module of allModules">
+                            <!-- Card Header - Accordion -->
+                            <!--i had to add 'd' afet '#' because browser didint accept a selector like '#41' and such-->
+                            <a [attr.href]="'#d'+ module.id" class="d-block card-header py-3 collapsed " data-bs-toggle="collapse" role="button" aria-expanded="false" [attr.aria-controls]="d + module.id" style="text-decoration: none;">
+                                <h6 class="m-0 font-weight-bold text-dark">{{module.moduleName}}</h6>
+                            </a>
+                            <!-- Card Content - Collapse -->
+                            <div class="collapse" [id]="'d' + module.id">
+                                <div class="card-body">
+                                    <div class="item-lists">
+                                        <div class="items">
+                                            <div class="items-body" *ngFor="let lesson of module.lessons">
+                                                <a style="text-decoration: none;" class="items-body-content" (click)="pickLesson(lesson); updateEnrollment(lesson)">
+                                                    <span>{{lesson.lessonName}}</span>
+                                                    <i class="fa fa-angle-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-8 order-lg-2 order-1">
+            <div *ngIf="loading">
+                Loading, please wait...
+            </div>
+            <app-lesson-content *ngIf="!loading" [lessonDetails]="pickedLesson"></app-lesson-content>
+
         </div>
     </div>
 </div>

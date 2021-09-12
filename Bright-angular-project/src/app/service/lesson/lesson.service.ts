@@ -13,4 +13,12 @@ export class LessonService {
   addLesson(lesson: Lesson) {
     return this.http.post<any>(this.lessonPath + "add", lesson);
   }
+
+  getLessonById(id: Number) {
+    return this.http.get<any>(this.lessonPath + id);
+  }
+
+  updateLesson(lesson: Lesson) {
+    return this.http.put<any>(this.lessonPath + "update", lesson);
+  }
 }

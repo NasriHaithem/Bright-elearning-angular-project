@@ -1,32 +1,33 @@
 <app-navbar></app-navbar>
+
 <!--PAGE TITLE-->
 <div class="jumbotron">
     <div class="row">
         <div>
-            <h2>Advance Web Designing Courses</h2>
+            <h2>{{courseDetails.title}}</h2>
             <ul class="row">
                 <li>
-                    <i class="fas fa-calendar-week text-info"></i> 10 - 20 Weeks
+                    <i class="fas fa-calendar-week text-info"></i> {{courseDetails.estimated_duration}} Weeks
                 </li>
                 <li>
-                    <i class="fas fa-play text-info"></i> 102 Lectures
+                    <i class="fas fa-play text-info"></i> {{courseDetails.modules.length}} Modules
                 </li>
                 <li>
-                    <i class="fas fa-user-graduate text-info"></i> 502 Students Enrolled
+                    <i class="fas fa-user-graduate text-info"></i> {{courseDetails.enrollments.length}} Students Enrolled
                 </li>
             </ul>
             <div>
                 <div>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
+                    <i class="fa-star text-warning mr-1" [ngClass]="{ 'fas' : score >=1, 'far' : score <1 }"></i>
+                    <i class="fa-star text-warning mr-1" [ngClass]="{ 'fas' : score >=2, 'far' : score <2 }"></i>
+                    <i class="fa-star text-warning mr-1" [ngClass]="{ 'fas' : score >=3, 'far' : score <3 }"></i>
+                    <i class="fa-star text-warning mr-1" [ngClass]="{ 'fas' : score >=4, 'far' : score <4 }"></i>
+                    <i class="fa-star text-warning mr-1" [ngClass]="{ 'fas' : score >=5, 'far' : score <5 }"></i>
 
-                    <strong class="col-lg-8 col-md-8 col-12 text-success">4.5</strong>
+                    <strong class="col-lg-8 col-md-8 col-12 text-success">{{score | number:'1.1-1'}}</strong>
                 </div>
                 <div>
-                    <span class="text-secondary">350 reviews</span>
+                    <span class="text-secondary">{{courseDetails.courseReviews.length}} reviews</span>
                 </div>
             </div>
         </div>
@@ -45,86 +46,48 @@
                     <h4 class="m-0 font-weight-bold text-primary">Course Overview</h4>
                 </div>
                 <div class="card-body">
-                    <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed tenetur delectus amet nesciunt nulla animi. Aliquam maiores molestias magni accusamus repellat reiciendis cum! Repellat consequatur quis, rem qui assumenda alias beatae enim
-                        maxime, officia nemo odio molestiae. Molestias dolorum sunt maxime neque quis culpa voluptatem ipsum hic suscipit quidem repudiandae alias velit voluptatibus, vero tenetur possimus aut repellat nisi, perspiciatis, dolorem aliquid
-                        veritatis ea! Exercitationem similique qui magnam iure debitis, ipsum veritatis voluptates unde, sed aut quo nesciunt quam ipsam! Temporibus neque praesentium quis odio, excepturi, nulla, harum accusamus reprehenderit eveniet libero
-                        enim iste. Earum saepe quam dignissimos nobis reiciendis?</p>
-                    <h6 class="font-weight-bold text-dark ">Requirements</h6>
-                    <ul class="requirements-list">
-                        <!-- HERE WE SHOULD ADD REQUIREMENTS LIST FROM JAVASCRIPT -->
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                    </ul>
+                    <p class="text-secondary">{{courseDetails.overview}}</p>
                 </div>
             </div>
 
             <!--COURSE CURRICULUM CARD -->
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h4 class="m-0 font-weight-bold text-primary">Course Curriculum</h4>
-                </div>
-
-                <!--COURSE MODULES-->
-                <div class="card-body">
-
-                    <div class="card  border-left-info mb-4">
-                        <!-- Card Header - Accordion -->
-                        <a href="#module1" class="d-block card-header py-3 collapsed " data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="module1" style="text-decoration: none;">
-                            <h6 class="m-0 font-weight-bold text-dark">Collapsable Card Example</h6>
-                        </a>
-                        <!-- Card Content - Collapse -->
-                        <div class="collapse" id="module1">
-                            <div class="card-body">
-                                This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                            </div>
-                        </div>
+                <div class="card h-100">
+                    <div class="card-header py-3">
+                        <h4 class="m-0 font-weight-bold text-primary">Table of content</h4>
                     </div>
 
-                    <div class="card  border-left-info mb-4">
-                        <!-- Card Header - Accordion -->
-                        <a href="#module2" class="d-block card-header py-3 collapsed " data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="module2" style="text-decoration: none;">
-                            <h6 class="m-0 font-weight-bold text-dark">Collapsable Card Example</h6>
-                        </a>
-                        <!-- Card Content - Collapse -->
-                        <div class="collapse" id="module2">
-                            <div class="card-body">
-                                This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
+                    <!--COURSE MODULES-->
+                    <div class="card-body">
+                        <div class="card  border-left-info mb-4" *ngFor="let module of courseDetails.modules">
+                            <!-- Card Header - Accordion -->
+                            <!--i had to add 'd' afet '#' because browser didint accept a selector like '#41' and such-->
+                            <a [attr.href]="'#d'+ module.id" class="d-block card-header py-3 collapsed " data-bs-toggle="collapse" role="button" aria-expanded="false" [attr.aria-controls]="d + module.id" style="text-decoration: none;">
+                                <h6 class="m-0 font-weight-bold text-dark">{{module.moduleName}}</h6>
+                            </a>
+                            <!-- Card Content - Collapse -->
+                            <div class="collapse" [id]="'d' + module.id">
+                                <div class="card-body">
+                                    <div class="item-lists">
+                                        <div class="items">
+                                            <div class="items-body" *ngFor="let lesson of module.lessons">
+                                                <div class="items-body-content">
+                                                    <span>{{lesson.lessonName}}</span>
+                                                    <i class="fa fa-angle-right"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card  border-left-info mb-4">
-                        <!-- Card Header - Accordion -->
-                        <a href="#module3" class="d-block card-header py-3 collapsed " data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="module3" style="text-decoration: none;">
-                            <h6 class="m-0 font-weight-bold text-dark">Collapsable Card Example</h6>
-                        </a>
-                        <!-- Card Content - Collapse -->
-                        <div class="collapse" id="module3">
-                            <div class="card-body">
-                                This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="card  border-left-info mb-4">
-                        <!-- Card Header - Accordion -->
-                        <a href="#module4" class="d-block card-header py-3 collapsed " data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="module4" style="text-decoration: none;">
-                            <h6 class="m-0 font-weight-bold text-dark">Collapsable Card Example</h6>
-                        </a>
-                        <!-- Card Content - Collapse -->
-                        <div class="collapse" id="module4">
-                            <div class="card-body">
-                                This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <!--INSTRUCTOR'S DEFTAILS CARD-->
+            <!--INSTRUCTOR'S DETAILS CARD-->
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="row">
@@ -132,20 +95,20 @@
                         <!-- INSTRUCTOR'S IMAGE-->
                         <div class="col-md-4 d-flex justify-content-center">
                             <div class="instructor-image">
-                                <img src="http://placehold.it/900x350" alt="instructor-image">
+                                <img [src]="courseDetails.instructor.photo" alt="instructor-image">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a [href]="courseDetails.instructor.facebook" *ngIf="courseDetails.instructor.facebook">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a [href]="courseDetails.instructor.linkedIn" *ngIf="courseDetails.instructor.linkedIn">
                                             <i class="fab fa-linkedin-in"></i> </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <i class="fab fa-twitter"></i> </a>
+                                        <a [href]="courseDetails.instructor.github" *ngIf="courseDetails.instructor.github">
+                                            <i class="fab fa-github"></i> </a>
                                     </li>
                                 </ul>
                             </div>
@@ -155,10 +118,7 @@
                         <div class="col-md-8">
                             <h3 class="font-weight-bold text-dark">instructor name</h3>
                             <p class="text-secondary">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae ducimus quas impedit asperiores sapiente cumque labore sit maiores culpa obcaecati cupiditate, tempore minima dolore accusantium magnam nesciunt, dignissimos voluptatem molestiae? Ea sapiente
-                                ratione quod ex iure assumenda esse temporibus aliquam odit. Magnam voluptas et dicta, reiciendis a quo illum debitis quas minima deserunt voluptate possimus temporibus sequi recusandae, eius doloribus hic reprehenderit
-                                corporis aut id est eum. Ipsa temporibus iste qui aspernatur, ducimus repellendus sunt deserunt eius illum voluptas excepturi sapiente maiores commodi eum reprehenderit ut amet voluptate mollitia est. Iusto, recusandae
-                                ipsa quisquam nisi fuga alias corrupti id beatae.
+                                {{courseDetails.instructor.brief_Introduction}}
                             </p>
                         </div>
 
@@ -174,13 +134,13 @@
                         <!-- RATING OVERVIEW BOX-->
                         <div class="col-md-3 d-flex justify-content-center align-items-center">
                             <div class="justify-content-center">
-                                <h1 class="display-4 font-weight-bold text-dark ml-2">4.5</h1>
+                                <h1 class="display-4 font-weight-bold text-dark ml-2">{{score | number:'1.1-1'}}</h1>
                                 <div>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="far fa-star text-warning"></i>
+                                    <i class="fa-star text-warning ml-1" [ngClass]="{ 'fas' : score >=1, 'far' : score <1 }"></i>
+                                    <i class="fa-star text-warning ml-1" [ngClass]="{ 'fas' : score >=2, 'far' : score <2 }"></i>
+                                    <i class="fa-star text-warning ml-1" [ngClass]="{ 'fas' : score >=3, 'far' : score <3 }"></i>
+                                    <i class="fa-star text-warning ml-1" [ngClass]="{ 'fas' : score >=4, 'far' : score <4 }"></i>
+                                    <i class="fa-star text-warning ml-1" [ngClass]="{ 'fas' : score >=5, 'far' : score <5 }"></i>
                                 </div>
                             </div>
                         </div>
@@ -189,21 +149,25 @@
                         <div class="col-md-9">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="small font-weight-bold">5 Stars<span class="float-right">50%</span></h4>
+                                    <h4 class="small font-weight-bold">5 Stars<span class="float-right">{{fiveStarsPercent | number}}%</span></h4>
                                     <div class="progress mb-1">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div id="bar-rate-5" class="progress-bar bg-info" role="progressbar"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">4 Stars <span class="float-right">20%</span></h4>
+                                    <h4 class="small font-weight-bold">4 Stars <span class="float-right">{{fourStarsPercent | number}}%</span></h4>
                                     <div class="progress mb-1">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div id="bar-rate-4" class="progress-bar bg-success" role="progressbar"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">3 Stars<span class="float-right">10%</span></h4>
+                                    <h4 class="small font-weight-bold">3 Stars<span class="float-right">{{threeStarsPercent | number}}%</span></h4>
                                     <div class="progress mb-1">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div id="bar-rate-3" class="progress-bar bg-warning" role="progressbar"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">1 & 2 Stars<span class="float-right">20%</span></h4>
+                                    <h4 class="small font-weight-bold">2 Stars<span class="float-right">{{twoStarsPercent | number}}%</span></h4>
                                     <div class="progress mb-1">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div id="bar-rate-2" class="progress-bar bg-danger" role="progressbar"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">1 Stars<span class="float-right">{{oneStarsPercent | number}}%</span></h4>
+                                    <div class="progress mb-1">
+                                        <div id="bar-rate-1" class="progress-bar bg-danger" role="progressbar"></div>
                                     </div>
                                 </div>
                             </div>
@@ -217,118 +181,65 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-dark">Students reviews</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Students reviews</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink" style="">
                             <div class="dropdown-header">Sort by:</div>
-                            <a class="dropdown-item" href="#">Upload date</a>
-                            <a class="dropdown-item" href="#">Rating</a>
+                            <a class="dropdown-item" (click)="sortReviewsByDate(courseDetails.courseReviews)">Upload date</a>
+                            <a class="dropdown-item" (click)="sortReviewsByRate(courseDetails.courseReviews)">Rating</a>
                         </div>
                     </div>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
-                    <div class="row border-left-info p-3 mb-3 shadow">
+                <div class="card-body" *ngFor="let review of courseDetails.courseReviews">
+                    <div class="row bg-light">
                         <div class="col-12">
                             <div class="review-header">
-                                <img src="./assets/images/teacher2.png" alt="">
+                                <img [src]="review.student.photo" alt="">
                                 <div>
-                                    <h6 class="text-dark">mohamed amine</h6>
-                                    <p>Tue, 20 Mar 2020</p>
+                                    <h6 class="text-dark">{{review.student.firstname}} {{review.student.lastname}}</h6>
+                                    <p>{{review.review_date | date:'yyyy-MM-dd'}}</p>
                                 </div>
                                 <div class="review-stars">
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="far fa-star text-warning"></i>
+                                    <i class="fa-star text-warning" [ngClass]="{ 'fas' : getStudentRating(review, courseDetails) >=1, 'far' : getStudentRating(review, courseDetails) <1 }"></i>
+                                    <i class="fa-star text-warning" [ngClass]="{ 'fas' : getStudentRating(review, courseDetails) >=2, 'far' : getStudentRating(review, courseDetails) <2 }"></i>
+                                    <i class="fa-star text-warning" [ngClass]="{ 'fas' : getStudentRating(review, courseDetails) >=3, 'far' : getStudentRating(review, courseDetails) <3 }"></i>
+                                    <i class="fa-star text-warning" [ngClass]="{ 'fas' : getStudentRating(review, courseDetails) >=4, 'far' : getStudentRating(review, courseDetails) <4 }"></i>
+                                    <i class="fa-star text-warning" [ngClass]="{ 'fas' : getStudentRating(review, courseDetails) >=5, 'far' : getStudentRating(review, courseDetails) <5 }"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas maxime doloribus facere, dolorum illum ea a ad molestiae veritatis tempore minima harum nostrum, aperiam natus maiores nisi aliquid ipsum deleniti iure. Atque incidunt sequi ipsa quaerat
-                                quod totam pariatur nam voluptatem, aperiam voluptate deserunt adipisci vero, dignissimos sapiente alias quo.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row border-left-info p-3 mb-3 shadow">
-                        <div class="col-12">
-                            <div class="review-header">
-                                <img src="./assets/images/teacher3.jpg" alt="">
-                                <div>
-                                    <h6 class="text-dark">haithem</h6>
-                                    <p>Tue, 20 Mar 2020</p>
-                                </div>
-                                <div class="review-stars">
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="far fa-star text-warning"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas maxime doloribus facere, dolorum illum ea a ad molestiae veritatis tempore minima harum nostrum, aperiam natus maiores nisi aliquid ipsum deleniti iure. Atque incidunt sequi ipsa quaerat
-                                quod totam pariatur nam voluptatem, aperiam voluptate deserunt adipisci vero, dignissimos sapiente alias quo.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row border-left-info p-3 mb-3 shadow">
-                        <div class="col-12">
-                            <div class="review-header">
-                                <img src="./assets/images/teacher.jpg" alt="">
-                                <div>
-                                    <h6 class="text-dark">abderrahmen</h6>
-                                    <p>Tue, 20 Mar 2020</p>
-                                </div>
-                                <div class="review-stars">
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="far fa-star text-warning"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas maxime doloribus facere, dolorum illum ea a ad molestiae veritatis tempore minima harum nostrum, aperiam natus maiores nisi aliquid ipsum deleniti iure. Atque incidunt sequi ipsa quaerat
-                                quod totam pariatur nam voluptatem, aperiam voluptate deserunt adipisci vero, dignissimos sapiente alias quo.
-                            </p>
+                            <p>{{review.comment}}</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!--LEAVE COMMENT AND RATE SECTION-->
-            <div class="card shadow mb-4">
+            <div class="card shadow mb-4" *ngIf="isLoggedInStudent()">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Leave Comment</h6>
                 </div>
                 <div class="card-body">
-                    <form action="">
+                    <form (ngSubmit)="submitReview(courseDetails)">
                         <div class="mb-3">
                             <h6 class="small font-weight-bold">Rate this Course</h6>
-                            <i class="far fa-star text-warning"></i>
-                            <i class="far fa-star text-warning"></i>
-                            <i class="far fa-star text-warning"></i>
-                            <i class="far fa-star text-warning"></i>
-                            <i class="far fa-star text-warning"></i>
+                            <i id="my-rating-star-1" class="far fa-star text-warning rating-course-stars" (click)="rateThisCourse($event, courseDetails)"></i>
+                            <i id="my-rating-star-2" class="far fa-star text-warning rating-course-stars" (click)="rateThisCourse($event, courseDetails)"></i>
+                            <i id="my-rating-star-3" class="far fa-star text-warning rating-course-stars" (click)="rateThisCourse($event, courseDetails)"></i>
+                            <i id="my-rating-star-4" class="far fa-star text-warning rating-course-stars" (click)="rateThisCourse($event, courseDetails)"></i>
+                            <i id="my-rating-star-5" class="far fa-star text-warning rating-course-stars" (click)="rateThisCourse($event, courseDetails)"></i>
                         </div>
 
                         <div class="mb-3">
                             <h6 class="small font-weight-bold">Your Review</h6>
-                            <textarea style="max-width: 100%;" name="review" id="my-review" cols="100%" rows="5"></textarea>
+                            <textarea style="max-width: 100%;" name="review" id="my-review" cols="100%" rows="5" [(ngModel)]="reviewTxt"></textarea>
                         </div>
-                        <button class="btn btn-info btn-sm" type="button"> Submit Review </button>
+                        <button class="btn btn-info btn-sm" type="submit" [disabled]="reviewTxt.length < 3"> Submit Review </button>
                     </form>
                 </div>
             </div>
@@ -349,21 +260,21 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    <video id="my-video" controls>
-
-                                                <source src="./assets/media/J. Jonah Jameson - could you pay me in advance .mp4"
-                                                        type="video/mp4">
-                                                <source src="./assets/media/J. Jonah Jameson - could you pay me in advance .webm"
-                                                        type="video/webm">
-                                            
-                                                Sorry, your browser doesn't support embedded videos.
-                                            </video>
+                                    <video id="my-video" [src]="courseDetails.introduction_video" controls></video>
                                 </div>
 
                                 <div class="modal-footer justify-content-center">
 
-                                    <button type="button" class="btn btn-danger btn-rounded btn-md ml-4" data-bs-dismiss="modal">Enroll</button>
-                                    <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-bs-dismiss="modal" (click)="pauseVideo()">Close</button>
+                                    <!-- ENROLL BUTTON-->
+                                    <div class="enroll" *ngIf="!isLoggedInStudent()">
+                                        <button class="btn btn-info enroll-button" routerLink="/login" data-bs-dismiss="modal">Login to enroll</button>
+                                    </div>
+                                    <div class="enroll" *ngIf="isLoggedInStudent()">
+                                        <button class="btn btn-info enroll-button" (click)="enroll()" data-bs-dismiss="modal">Enroll now ></button>
+                                    </div>
+                                    <div class="enroll">
+                                        <button type="button" class="btn btn-primary enroll-button" style="width: 100px;" data-bs-dismiss="modal" (click)="pauseVideo()">Close</button>
+                                    </div>
 
                                 </div>
                             </div>
@@ -376,30 +287,33 @@
                     <div class="price">
                         <span>Course Price</span>
                         <br>
-                        <strong class="text-danger">$ 149.00</strong>
+                        <strong class="text-danger">{{courseDetails.price | currency}}</strong>
                     </div>
                     <div class="features">
                         <h6>Course Features</h6>
                         <div class="features-icon">
                             <div>
-                                <i class="fas fa-users"></i>350 Students
+                                <i class="fas fa-users"></i>{{courseDetails.enrollments.length}} Students
                             </div>
                             <div>
-                                <i class="fas fa-clock"></i>10Hours 30min
+                                <i class="fas fa-clock"></i>{{courseDetails.estimated_duration}} Weeks
                             </div>
                             <div>
-                                <i class="fas fa-sort-amount-up-alt"></i>Intermediate
+                                <i class="fas fa-sort-amount-up-alt"></i>{{courseDetails.difficulty}}
                             </div>
                             <div>
-                                <i class="fas fa-stream"></i>10 Modules
+                                <i class="fas fa-stream"></i>{{courseDetails.modules.length}} Modules
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- ENROLL BUTTON-->
-                <div class="enroll">
-                    <button class="btn btn-info enroll-button">Enroll Now ></button>
+                <div class="enroll" *ngIf="!isLoggedInStudent()">
+                    <button class="btn btn-info enroll-button" routerLink="/login" (click)="enroll()">Login to enroll</button>
+                </div>
+                <div class="enroll" *ngIf="isLoggedInStudent()">
+                    <button class="btn btn-info enroll-button" (click)="enroll()">Enroll now ></button>
                 </div>
             </div>
 

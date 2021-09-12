@@ -19,6 +19,7 @@ export class Instructor{
         public linkedIn?: String,
         public github?: String,
         public courses?: Course[],
+        public role?: string
 
     ) {
     }
