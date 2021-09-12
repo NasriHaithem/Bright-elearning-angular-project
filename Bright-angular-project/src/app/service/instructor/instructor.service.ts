@@ -45,4 +45,8 @@ export class InstructorService {
   updateInstructorState(id: Number) {
     return this.http.patch<any>(this.instructorPath + `updateState/${id}`, {});
   }
+
+  getMyStudents(id: Number) {
+    return this.http.get<any>(this.instructorPath + `${id}/students`);
+  }
 }

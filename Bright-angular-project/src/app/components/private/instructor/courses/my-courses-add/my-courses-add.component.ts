@@ -104,6 +104,7 @@ export class MyCoursesAddComponent implements OnInit {
                   .subscribe((
                     (resp) => {
                       console.log("added successfully");
+                      this.router.navigateByUrl('/instructor/courses/list')
                     }
                   ))
               }
